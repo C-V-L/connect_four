@@ -21,7 +21,7 @@ RSpec.describe Turn do
         expect(turn.open_column?('A')).to eq(false)
     end
 
-    xit 'can place a peice in lowest available row' do
+    it 'can place a peice in lowest available row' do
         board = Board.new
         player1 = Player.new("Benedict")
         turn = Turn.new(player1, board)
