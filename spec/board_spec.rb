@@ -12,4 +12,5 @@ RSpec.describe Board do
         board = Board.new
         expect(board.game_board.count).to eq(6)
     end
+    
 end
