@@ -25,7 +25,13 @@ RSpec.describe Turn do
         board = Board.new
         player1 = Player.new("Benedict")
         turn = Turn.new(player1, board)
+
         turn.place_piece('A')
+        
         expect(turn.board.game_board[5][0]).to eq("X")
+        turn.place_piece('A')
+        expect(turn.board.game_board[4][0]).to eq("X")
+        require 'pry'; binding.pry
+
     end
 end
