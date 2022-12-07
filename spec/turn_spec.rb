@@ -42,13 +42,14 @@ RSpec.describe Turn do
     end
 
     describe'#computer_selection' do 
-        it 'select a random valid placement for the board' do 
+        xit 'select a random valid placement for the board' do 
             board = Board.new
             player1 = Player.new("Benedict", "X")
             turn = Turn.new(player1, board)
 
             expect(turn.computer_player).to be_a(Player)
-            #expect(turn.computer_selection).to include("A")
+            expect(turn.open_column?(turn.computer_selection)).to eq(true)
+
 
         end
     end
