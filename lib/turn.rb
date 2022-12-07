@@ -95,6 +95,36 @@ class Turn
       end      
     end.reverse
   end
+
+# Needs to check sequential chacaters in each array
+# If any array contains 4 sequential chars then win is determined
+# convert each row to string using .join. 
+# Then check to see if str contains "XXXX" or "OOOO"
+  def check_win_horizontal
+    board.game_board.find do |row|
+      if row.join.include?("XXXX") == true
+        return true
+      elsif row.join.include?("OOOO") == true
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  def check_win_vertical
+    board.game_board.transpose.find do |row|
+      if row.join.include?("XXXX") == true
+        return true
+      elsif row.join.include?("OOOO") == true
+        return true
+      else
+        return false
+      end
+    end
+  end
+
+  
 end 
 
 
