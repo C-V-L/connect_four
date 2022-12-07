@@ -22,4 +22,12 @@ RSpec.describe Game do
         expect(game.turn).to be_a(Turn)
         expect(game.turn.computer_player.piece).to eq("O")
     end
+
+    it 'has a welcome message' do
+        board = Board.new
+        player1 = Player.new("Benedict", "X")
+        turn = Turn.new(player1, board)
+        game = Game.new
+        expect(game.welcome_message).to be_a(String)
+    end
 end

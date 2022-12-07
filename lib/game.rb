@@ -11,4 +11,7 @@ class Game
         user_name_entry = gets.chomp.capitalize
         player = Player.new(user_name_entry, "X")
     end
+
+    
+
 end
