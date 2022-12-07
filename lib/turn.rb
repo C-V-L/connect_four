@@ -78,12 +78,13 @@ class Turn
   end
 
   def computer_selection 
-    computer_selection_array = ["A", "B", "C", "D", "E", "F", "G"]
-    #require 'pry'; binding.pry
-     #computer_input = computer_selection_array.sample
-    until open_column?(computer_input) == true 
-      computer_input = computer_selection_array.sample
-      computer_input
+    computer_selection_array = ["A", "B", "C", "D", "E", "F", "G"] 
+    computer_input = computer_selection_array.shuffle!
+
+    computer_input.find do |letter|
+      if open_column?(letter) == true 
+       letter
+      end
     end
   end
 end 

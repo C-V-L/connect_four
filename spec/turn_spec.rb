@@ -42,7 +42,7 @@ RSpec.describe Turn do
     end
 
     describe'#computer_selection' do 
-        xit 'select a random valid placement for the board' do 
+        it 'select a random valid placement for the board' do 
             board = Board.new
             player1 = Player.new("Benedict", "X")
             turn = Turn.new(player1, board)
