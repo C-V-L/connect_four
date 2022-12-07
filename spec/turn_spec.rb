@@ -107,10 +107,11 @@ RSpec.describe Turn do
         board = Board.new
         player1 = Player.new("Benedict", "X")
         turn = Turn.new(player1, board)
-        turn.board.game_board[0][0] = "X"
-        turn.board.game_board[1][1] = "X"
-        turn.board.game_board[2][2] = "X"
-        turn.board.game_board[3][3] = "X"
+        turn.board.game_board[5][0] = "X"
+        turn.board.game_board[4][1] = "X"
+        turn.board.game_board[3][2] = "X"
+        turn.board.game_board[2][3] = "X"
+        binding.pry
         expect(turn.check_win_diagonal_upward).to be(turn.player1)
     end
 
