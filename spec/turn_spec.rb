@@ -39,6 +39,7 @@ RSpec.describe Turn do
             expect(turn.board.game_board[5][2]).to eq("X")
         
         end
+
     end
 
     describe'#computer_selection' do 
@@ -49,8 +50,18 @@ RSpec.describe Turn do
 
             expect(turn.computer_player).to be_a(Player)
             expect(turn.open_column?(turn.computer_selection)).to eq(true)
+        end
 
+    end
 
+    describe '#computer_place_piece' do 
+        it 'places the computers piece on the board' do 
+            board = Board.new
+            player1 = Player.new("Benedict", "X")
+            turn = Turn.new(player1, board) 
+
+            turn.computer_place_piece(turn.computer_selection)
+            expect(board.game_board[5]).to include("O")
         end
     end
 end

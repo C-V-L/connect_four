@@ -19,12 +19,11 @@ class Turn
         # "Enter 'A' - 'G"
     
     # COMPUTER TURN
-    # computer_selection 
-    # if open_column?(computer_selection) == true 
-    #  place_piece(computer_selection)
-    # else  
-    #   computer_selection 
-    #dunno yet
+    # computer_play = place_piece(computer_selection) 
+    # computer_place_piece(computer_play)
+    
+    # 
+    #dunno yet, just jotting down ideas
     
     #------------------------------------------------------------------- 
 
@@ -86,6 +85,15 @@ class Turn
        letter
       end
     end
+  end
+
+  def computer_place_piece(computer_input)
+    user_chosen_column = convert_letter_to_index(computer_input)
+    @board.game_board.reverse.find do |row| 
+      if row[user_chosen_column] == "."
+        row[user_chosen_column] = @computer_player.piece 
+      end      
+    end.reverse
   end
 end 
 
