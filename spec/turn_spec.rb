@@ -90,4 +90,17 @@ RSpec.describe Turn do
             expect(turn.check_win_vertical).to be(true)
         end
     end
+
+    describe '#check_win_diagonal' do
+    it 'can check for diag win' do
+        board = Board.new
+        player1 = Player.new("Benedict", "X")
+        turn = Turn.new(player1, board)
+        turn.board.game_board[0][0] = "X"
+        turn.board.game_board[1][1] = "X"
+        turn.board.game_board[2][2] = "X"
+        turn.board.game_board[3][3] = "X"
+        expect(turn.check_win_diagonal).to be(true)
+    end
+end
 end
