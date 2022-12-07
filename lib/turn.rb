@@ -103,9 +103,9 @@ class Turn
   def check_win_horizontal
     board.game_board.find do |row|
       if row.join.include?("XXXX") == true
-        return true
+        return @player1
       elsif row.join.include?("OOOO") == true
-        return true
+        return @computer_player
       else
         return false
       end
@@ -115,16 +115,19 @@ class Turn
   def check_win_vertical
     board.game_board.transpose.find do |row|
       if row.join.include?("XXXX") == true
-        return true
+        return @player1
       elsif row.join.include?("OOOO") == true
-        return true
+        return @computer_player
       else
         return false
       end
     end
   end
 
-  
+  def check_win_diagonal
+
+  end
+
 
 end 
 
