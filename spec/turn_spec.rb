@@ -51,7 +51,6 @@ RSpec.describe Turn do
             expect(turn.computer_player).to be_a(Player)
             expect(turn.open_column?(turn.computer_selection)).to eq(true)
         end
-
     end
 
     describe '#computer_place_piece' do 
@@ -74,7 +73,7 @@ RSpec.describe Turn do
         turn.board.game_board[0][1] = "X"
         turn.board.game_board[0][2] = "X"
         turn.board.game_board[0][3] = "X"
-        expect(turn.check_win_horizontal).to be(true)
+        expect(turn.check_win_horizontal).to be(turn.player1)
         end
     end
 
@@ -83,11 +82,38 @@ RSpec.describe Turn do
             board = Board.new
             player1 = Player.new("Benedict", "X")
             turn = Turn.new(player1, board)
-            turn.board.game_board[0][0] = "X"
-            turn.board.game_board[1][0] = "X"
-            turn.board.game_board[2][0] = "X"
-            turn.board.game_board[3][0] = "X"
-            expect(turn.check_win_vertical).to be(true)
+            turn.board.game_board[0][0] = "O"
+            turn.board.game_board[1][0] = "O"
+            turn.board.game_board[2][0] = "O"
+            turn.board.game_board[3][0] = "O"
+            expect(turn.check_win_vertical).to be(turn.computer_player)
         end
     end
+
+    describe '#check_win_diagonal' do
+    it 'can check for downward diag win' do
+        board = Board.new
+        player1 = Player.new("Benedict", "X")
+        turn = Turn.new(player1, board)
+        turn.board.game_board[0][0] = "X"
+        turn.board.game_board[1][1] = "X"
+        turn.board.game_board[2][2] = "X"
+        turn.board.game_board[3][3] = "X"
+        expect(turn.check_win_diagonal_downward).to be(turn.player1)
+    end
+
+    it 'can check for upward diag win' do
+        board = Board.new
+        player1 = Player.new("Benedict", "X")
+        turn = Turn.new(player1, board)
+        turn.board.game_board[5][0] = "X"
+        turn.board.game_board[4][1] = "X"
+        turn.board.game_board[3][2] = "X"
+        turn.board.game_board[2][3] = "X"
+        binding.pry
+        expect(turn.check_win_diagonal_upward).to be(turn.player1)
+    end
+
+
+end
 end
