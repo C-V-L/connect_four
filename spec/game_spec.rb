@@ -28,6 +28,7 @@ RSpec.describe Game do
         player1 = Player.new("Benedict", "X")
         turn = Turn.new(player1, board)
         game = Game.new
+        binding.pry
         expect(game.welcome_message).to include?(String)
     end
 end
