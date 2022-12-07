@@ -51,7 +51,6 @@ RSpec.describe Turn do
             expect(turn.computer_player).to be_a(Player)
             expect(turn.open_column?(turn.computer_selection)).to eq(true)
         end
-
     end
 
     describe '#computer_place_piece' do 

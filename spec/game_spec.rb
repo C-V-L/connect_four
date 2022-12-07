@@ -12,6 +12,14 @@ RSpec.describe Game do
         turn = Turn.new(player1, board)
         game = Game.new
         expect(game).to be_a(Game)
+    end
 
+    it 'has a turn' do
+        board = Board.new
+        player1 = Player.new("Benedict", "X")
+        turn = Turn.new(player1, board)
+        game = Game.new
+        expect(game.turn).to be_a(Turn)
+        expect(game.turn.computer_player.piece).to eq("O")
     end
 end
