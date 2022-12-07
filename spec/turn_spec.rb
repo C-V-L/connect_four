@@ -77,4 +77,17 @@ RSpec.describe Turn do
         expect(turn.check_win_horizontal).to be(true)
         end
     end
+
+    describe '#check_win_vertical' do
+        it 'can check for vert win' do
+            board = Board.new
+            player1 = Player.new("Benedict", "X")
+            turn = Turn.new(player1, board)
+            turn.board.game_board[0][0] = "X"
+            turn.board.game_board[1][0] = "X"
+            turn.board.game_board[2][0] = "X"
+            turn.board.game_board[3][0] = "X"
+            expect(turn.check_win_vertical).to be(true)
+        end
+    end
 end
