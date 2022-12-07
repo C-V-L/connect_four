@@ -92,7 +92,7 @@ RSpec.describe Turn do
     end
 
     describe '#check_win_diagonal' do
-    it 'can check for diag win' do
+    it 'can check for downward diag win' do
         board = Board.new
         player1 = Player.new("Benedict", "X")
         turn = Turn.new(player1, board)
@@ -100,7 +100,20 @@ RSpec.describe Turn do
         turn.board.game_board[1][1] = "X"
         turn.board.game_board[2][2] = "X"
         turn.board.game_board[3][3] = "X"
-        expect(turn.check_win_diagonal).to be(turn.player1)
+        expect(turn.check_win_diagonal_downward).to be(turn.player1)
     end
+
+    it 'can check for upward diag win' do
+        board = Board.new
+        player1 = Player.new("Benedict", "X")
+        turn = Turn.new(player1, board)
+        turn.board.game_board[0][0] = "X"
+        turn.board.game_board[1][1] = "X"
+        turn.board.game_board[2][2] = "X"
+        turn.board.game_board[3][3] = "X"
+        expect(turn.check_win_diagonal_upward).to be(turn.player1)
+    end
+
+
 end
 end
