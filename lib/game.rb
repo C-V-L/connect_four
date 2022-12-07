@@ -12,6 +12,9 @@ class Game
         player = Player.new(user_name_entry, "X")
     end
 
-    
+    def welcome_message
+        "Welcome to CONNECT FOUR"
+        "Enter p to play. Enter q to quit."
+    end
 
 end
