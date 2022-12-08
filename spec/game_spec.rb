@@ -23,23 +23,12 @@ RSpec.describe Game do
         expect(game.turn.computer_player.piece).to eq("O")
     end
 
-    xit 'has a welcome message' do
+    it 'has a welcome message' do
         board = Board.new
         player1 = Player.new("Benedict", "X")
         turn = Turn.new(player1, board)
         game = Game.new
-       # binding.pry
+        binding.pry
         expect(game.welcome_message).to include?(String)
-    end
-
-    describe '#print_board' do 
-        it 'displays the board' do 
-            board = Board.new
-            player1 = Player.new("Benedict", "X")
-            turn = Turn.new(player1, board)
-            game = Game.new
-
-            expect(game.print_board).to eq(nil)
-        end
     end
 end
