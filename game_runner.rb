@@ -6,5 +6,3 @@ require 'pry'
 
 game = Game.new
 game.print_board
-#require 'pry'; binding.pry
-game.play_connect_four
