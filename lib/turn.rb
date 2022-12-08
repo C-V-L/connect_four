@@ -174,20 +174,6 @@ class Turn
         end
       end
     end
-  
-  def check_all_wins
-    if check_win_diagonal_downward != false 
-      check_win_diagonal_downward
-    elsif check_win_diagonal_upward != false 
-      check_win_diagonal_upward
-    elsif check_win_horizontal != false 
-      check_win_horizontal 
-    elsif check_win_vertical != false 
-      check_win_vertical 
-    else 
-      false 
-    end 
-  end
 
 
 end 
