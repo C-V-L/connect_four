@@ -3,7 +3,7 @@ class Game
     attr_reader :turn, :player, :board
     def initialize
         @board = Board.new
-        @player1 = Player.new("", "X")
+        @player1 = Player.new(" ", "X")
         @turn = Turn.new(@player1, @board)
     end
 
