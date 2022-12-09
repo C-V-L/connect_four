@@ -7,26 +7,6 @@ class Turn
     @computer_player = Player.new("Computer", "O")
   end
 
-    # use a conditional statement when running the turn
-    # something like 
-
-    # PLAYER TURN
-    # player_input = gets.chomp
-    # if open_column?(player_input) == true 
-            #place_piece(player_input)
-    # else
-        # "Invalid placement or the slot is full, pick another column" 
-        # "Enter 'A' - 'G"
-    
-    # COMPUTER TURN
-    # computer_play = place_piece(computer_selection) 
-    # computer_place_piece(computer_play)
-    
-    # 
-    #dunno yet, just jotting down ideas
-    
-    #------------------------------------------------------------------- 
-
   def convert_letter_to_index(player_input)
     if player_input == 'A' 
       0
@@ -102,8 +82,6 @@ class Turn
         return @player1
       elsif row.join.include?("OOOO") == true
         return @computer_player
-      else
-        return false
       end
     end
   end
@@ -114,8 +92,6 @@ class Turn
         return @player1
       elsif row.join.include?("OOOO") == true
         return @computer_player
-      else
-        return false
       end
     end
   end
@@ -141,7 +117,6 @@ class Turn
         return player1
       elsif diagonal.join.include?("OOOO") == true
         return computer_player
-      else return false
       end
     end
   end
@@ -169,27 +144,23 @@ class Turn
           return player1
         elsif diagonal.join.include?("OOOO") == true
           return computer_player
-        else 
-          return false
         end
       end
     end
     
   def check_all_wins
-    if check_win_diagonal_downward != false 
+    if check_win_diagonal_downward != nil
       check_win_diagonal_downward
-    elsif check_win_diagonal_upward != false 
+    elsif check_win_diagonal_upward != nil
       check_win_diagonal_upward
-    elsif check_win_horizontal != false 
+    elsif check_win_horizontal != nil
       check_win_horizontal 
-    elsif check_win_vertical != false 
+    elsif check_win_vertical != nil
       check_win_vertical 
     else 
       false 
     end 
   end
-
-
 end 
 
 

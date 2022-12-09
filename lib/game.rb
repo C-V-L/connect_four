@@ -41,8 +41,9 @@ class Game
     end
     def play_connect_four
     
-        until (turn.check_win_diagonal_downward != false) || (turn.check_win_diagonal_upward != false) ||
-              (turn.check_win_horizontal != false) || (turn.check_win_vertical != false) || (check_for_draw == true)
+        
+        until (turn.check_win_diagonal_downward != nil) || (turn.check_win_diagonal_upward != nil) ||
+              (turn.check_win_horizontal != nil) || (turn.check_win_vertical != nil) || (check_for_draw == true)
 
             puts "Choose a column from A - G to place your piece" 
             user_column_choice = gets.chomp.upcase
@@ -58,6 +59,19 @@ class Game
                 turn.check_win_diagonal_upward
                 turn.check_win_horizontal
                 turn.check_win_vertical
+
+                if @turn.check_all_wins == @player1
+                     puts "Congrats, #{turn.check_all_wins.name}! You won!"
+                     break
+                elsif @turn.check_all_wins == turn.computer_player
+                     puts "I won!"
+                    break
+                elsif turn.check_all_wins == false && check_for_draw == true 
+                     puts "It's a draw. Everyone loses"
+                     break
+                end 
+                
+             
                 
             else  
                 
@@ -66,7 +80,13 @@ class Game
             end
         end
 
-        puts   "#{turn.check_all_wins.name}"
+        # if @turn.check_all_wins.name == @player1.name 
+        #      puts   "Congrats, #{turn.check_all_wins.name}! You won!"
+        # elsif @turn.check_all_wins == turn.computer_player
+        #     puts "I won!"
+        # else 
+        #     puts "It's a draw. Everyone loses"
+        # end
     
     end
 
