@@ -86,7 +86,19 @@ RSpec.describe Turn do
             turn.board.game_board[1][0] = "O"
             turn.board.game_board[2][0] = "O"
             turn.board.game_board[3][0] = "O"
-            expect(turn.check_win_vertical).to be(turn.computer_player)
+            expect(turn.check_win_vertical).to eq(turn.computer_player)
+        end
+
+        it 'can check for vert win' do
+            board = Board.new
+            player1 = Player.new("Benedict", "X")
+            turn = Turn.new(player1, board)
+            turn.board.game_board[0][5] = "O"
+            turn.board.game_board[1][5] = "O"
+            turn.board.game_board[2][5] = "O"
+            turn.board.game_board[3][5] = "O"
+           
+            expect(turn.check_win_vertical).to eq(turn.computer_player)
         end
     end
 
@@ -110,7 +122,7 @@ RSpec.describe Turn do
         turn.board.game_board[4][1] = "X"
         turn.board.game_board[3][2] = "X"
         turn.board.game_board[2][3] = "X"
-        binding.pry
+
         expect(turn.check_win_diagonal_upward).to be(turn.player1)
     end
 
