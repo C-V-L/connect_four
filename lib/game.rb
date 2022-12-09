@@ -2,8 +2,8 @@
 class Game
     attr_reader :turn, :player, :board
      def initialize
-    #     # @board = Board.new
-         @player1 = Player.new(" ", "X")
+        @board = Board.new
+        @player1 = Player.new("", "X")
     #     # @turn = Turn.new(@player1, @board)
      end
 
@@ -33,7 +33,7 @@ class Game
     end
 
     def print_board
-        puts "
+        "
         A B C D E F G
         #{board.game_board[0].join(" ")}
         #{board.game_board[1].join(" ")}
@@ -50,7 +50,7 @@ class Game
          @player1 = Player.new("", "X")
          @turn = Turn.new(@player1, @board)
          create_player
-         print_board
+         puts print_board
         
         until (turn.check_win_diagonal_downward != nil) || (turn.check_win_diagonal_upward != nil) ||
               (turn.check_win_horizontal != nil) || (turn.check_win_vertical != nil) || (check_for_draw == true)
@@ -62,7 +62,7 @@ class Game
                 turn.place_piece(user_column_choice)
                 computer_turn = turn.computer_selection
                 turn.computer_place_piece(computer_turn)
-                print_board
+                puts print_board
               
                 turn.check_win_diagonal_downward
                 turn.check_win_diagonal_upward
@@ -87,7 +87,7 @@ class Game
 
     def display_winner 
          if @turn.check_all_wins == @player1
-            puts "  ~*~*~*~ Congrats #{player1.name}! You won! ~*~*~*~"
+            puts "  ~*~*~*~ Congrats #{@player1.name}! You won! ~*~*~*~"
              welcome_message
          elsif @turn.check_all_wins == turn.computer_player
             puts "!--- HAHA! I won! Yeah! ---!"

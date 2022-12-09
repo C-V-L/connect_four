@@ -11,6 +11,7 @@ RSpec.describe Turn do
         turn = Turn.new(player1, board)
         expect(turn.player1).to eq(player1)
         expect(turn.board).to eq(board)
+        expect(turn.computer_player).to be_a(Player)
     end
 
     describe '#open_column?' do
