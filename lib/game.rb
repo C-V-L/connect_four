@@ -19,6 +19,7 @@ class Game
         user_welcome_entry = gets.chomp.capitalize
         if user_welcome_entry.downcase == "p"
             create_player
+            play_connect_four
         elsif user_welcome_entry.downcase == 'q'
             exit
         else
@@ -59,34 +60,14 @@ class Game
                 turn.check_win_diagonal_upward
                 turn.check_win_horizontal
                 turn.check_win_vertical
-
-                if @turn.check_all_wins == @player1
-                     puts "Congrats, #{turn.check_all_wins.name}! You won!"
-                     break
-                elsif @turn.check_all_wins == turn.computer_player
-                     puts "I won!"
-                    break
-                elsif turn.check_all_wins == false && check_for_draw == true 
-                     puts "It's a draw. Everyone loses"
-                     break
-                end 
-                
-             
-                
+                display_winner
+      
             else  
                 
                 puts "#{user_column_choice}: This is not an available column"
                 self.play_connect_four
             end
         end
-
-        # if @turn.check_all_wins.name == @player1.name 
-        #      puts   "Congrats, #{turn.check_all_wins.name}! You won!"
-        # elsif @turn.check_all_wins == turn.computer_player
-        #     puts "I won!"
-        # else 
-        #     puts "It's a draw. Everyone loses"
-        # end
     
     end
 
@@ -96,5 +77,18 @@ class Game
         else
             false
         end
+    end
+
+    def display_winner 
+         if @turn.check_all_wins == @player1
+             puts "Congrats, #{turn.check_all_wins.name}! You won!"
+             self.play_connect_four
+         elsif @turn.check_all_wins == turn.computer_player
+            puts "HAHA! I won!"
+            self.play_connect_four
+         elsif turn.check_all_wins == false && check_for_draw == true 
+             puts "It's a draw. Everyone loses :'("
+            self.play_connect_four
+        end 
     end
 end
