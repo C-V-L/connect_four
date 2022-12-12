@@ -1,4 +1,6 @@
 
+require 'time'
+
 class Game
   attr_reader :turn, :player, :board
   def initialize
@@ -44,12 +46,23 @@ class Game
     "
   end
 
+  def start_time 
+    @start_time ||= Time.now.freeze 
+    #memoization
+  end
+
+  def total_time
+    time = Time.now.to_i - start_time.to_f 
+  end
+
   def play_connect_four
     
     @board = Board.new
     @player1 = Player.new("", "X")
     @turn = Turn.new(@player1, @board)
     create_player
+    start_time 
+    
     puts print_board
         
       until (turn.check_win_diagonal_downward != nil) || (turn.check_win_diagonal_upward != nil) ||
@@ -87,7 +100,10 @@ class Game
   def display_winner 
     if @turn.check_all_wins == @player1
       puts "  ~*~*~*~ Congrats #{@player1.name}! You won! ~*~*~*~"
-      welcome_message
+      # puts total_time
+      # record_end_time << total_time
+      # puts record_end_time
+      # welcome_message
     elsif @turn.check_all_wins == @turn.computer_player
       puts "!--- HAHA Human! You lose! Yeah! ---!"
       welcome_message
@@ -95,5 +111,14 @@ class Game
       puts "It's a draw. Everyone loses :'("
       welcome_message
     end 
+  end
+
+  def record_end_time 
+    []
+  end
+
+  def log_time_result 
+    # require 'pry'; binding.pry
+    puts record_end_time.sort 
   end
 end
