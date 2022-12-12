@@ -4,9 +4,9 @@ require './lib/player'
 class Board < Turn
   attr_reader :game_board
   def initialize
-        @game_board = set_up_board
-        @player1 = Player.new("", "X")
-        @computer_player = Player.new("BeepBoop", "O")
+    @game_board = set_up_board
+    @player1 = Player.new("", "X")
+    @computer_player = Player.new("BeepBoop", "O")
   end
 
   def set_up_board

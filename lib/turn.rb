@@ -3,16 +3,16 @@ class Turn
 
   def initialize(player1, board)
     @board = board
-    @player1 = Player.new("", "X")
+    @player1 = player1
     @computer_player = Player.new("Computer", "O")
   end
 
   def check_win_horizontal
     board.game_board.find do |row|
       if row.join.include?("XXXX") == true
-        return @board.player1
+        return player1
       elsif row.join.include?("OOOO") == true
-        return @board.computer_player
+        return computer_player
       end
     end
   end
@@ -20,9 +20,9 @@ class Turn
   def check_win_vertical
     board.game_board.transpose.find do |row|
       if row.join.include?("XXXX") == true
-        return @board.player1
+        return player1
       elsif row.join.include?("OOOO") == true
-        return @board.computer_player
+        return computer_player
       end
     end
   end
@@ -44,9 +44,9 @@ class Turn
 
     posible_diagonals.find do |diagonal|
       if diagonal.join.include?("XXXX") == true
-        return @board.player1
+        return player1
       elsif diagonal.join.include?("OOOO") == true
-        return @board.computer_player
+        return computer_player
       end
     end
   end
@@ -71,9 +71,9 @@ class Turn
   
       posible_diagonals.find do |diagonal|
         if diagonal.join.include?("XXXX") == true
-          return @board.player1
+          return player1
         elsif diagonal.join.include?("OOOO") == true
-          return @board.computer_player
+          return computer_player
         end
       end
     end
