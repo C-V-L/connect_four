@@ -58,10 +58,10 @@ class Game
             puts "Choose a column from A - G to place your piece" 
             user_column_choice = gets.chomp.upcase
 
-            if turn.open_column?(user_column_choice) == true 
-                turn.place_piece(user_column_choice)
-                computer_turn = turn.computer_selection
-                turn.computer_place_piece(computer_turn)
+            if board.open_column?(user_column_choice) == true 
+                board.place_piece(user_column_choice)
+                computer_turn = board.computer_selection
+                board.computer_place_piece(computer_turn)
                 puts print_board
               
                 turn.check_win_diagonal_downward
@@ -86,10 +86,10 @@ class Game
     end
 
     def display_winner 
-         if @turn.check_all_wins == @player1
+         if @turn.check_all_wins == @board.player1
             puts "  ~*~*~*~ Congrats #{@player1.name}! You won! ~*~*~*~"
              welcome_message
-         elsif @turn.check_all_wins == turn.computer_player
+         elsif @turn.check_all_wins == @board.computer_player
             puts "!--- HAHA! I won! Yeah! ---!"
             welcome_message
          elsif turn.check_all_wins == false && check_for_draw == true 

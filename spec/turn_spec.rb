@@ -14,17 +14,9 @@ RSpec.describe Turn do
         expect(turn.computer_player).to be_a(Player)
     end
 
-    describe '#open_column?' do
-        it 'can check if selected row is available' do
-            board = Board.new
-            player1 = Player.new("Benedict", "X")
-            turn = Turn.new(player1, board)
-            expect(turn.open_column?('A')).to eq(true)
-            turn.board.game_board[0][0] = "X"
-            expect(turn.open_column?('A')).to eq(false)
-        end
-    end
 
+    end
+# move to board
    describe '#place_piece' do 
         it 'can place a peice in lowest available row' do
             board = Board.new
@@ -32,7 +24,6 @@ RSpec.describe Turn do
             turn = Turn.new(player1, board)
 
             turn.place_piece('A')
-            
             expect(turn.board.game_board[5][0]).to eq("X")
             turn.place_piece('A')
             expect(turn.board.game_board[4][0]).to eq("X")
@@ -43,17 +34,17 @@ RSpec.describe Turn do
 
     end
 
+# move to board
     describe'#computer_selection' do 
         it 'select a random valid placement for the board' do 
             board = Board.new
             player1 = Player.new("Benedict", "X")
             turn = Turn.new(player1, board)
-
             expect(turn.computer_player).to be_a(Player)
             expect(turn.open_column?(turn.computer_selection)).to eq(true)
         end
     end
-
+# move to board
     describe '#computer_place_piece' do 
         it 'places the computers piece on the board' do 
             board = Board.new

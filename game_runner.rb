@@ -6,4 +6,4 @@ require 'pry'
 
 game = Game.new
 game.welcome_message
-#game.play_connect_four
+
