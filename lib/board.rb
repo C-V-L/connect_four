@@ -18,7 +18,6 @@ class Board < Turn
     [".",".",".",".",".",".","."]]
   end
 
-  #  Move to board
   def convert_letter_to_index(player_input)
     if player_input == 'A' 
       0
@@ -39,7 +38,6 @@ class Board < Turn
     end 
   end
 
-  # Move to board class
   def place_piece(player_input)  
     user_chosen_column = convert_letter_to_index(player_input)
     game_board.reverse.find do |row| 
@@ -48,8 +46,7 @@ class Board < Turn
       end      
     end.reverse
   end
-  
-   # Move to board class
+
    def computer_selection 
     computer_selection_array = ["A", "B", "C", "D", "E", "F", "G"] 
     computer_input = computer_selection_array.shuffle!
@@ -61,7 +58,6 @@ class Board < Turn
     end
   end
 
-# Move to board class
   def computer_place_piece(computer_input)
     user_chosen_column = convert_letter_to_index(computer_input)
     game_board.reverse.find do |row| 
@@ -70,7 +66,7 @@ class Board < Turn
       end      
     end.reverse
   end 
-# move to board?
+
   def open_column?(player_input)
     if player_input == "A" && game_board[0][0] == "."
       true

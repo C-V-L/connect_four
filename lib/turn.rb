@@ -53,30 +53,29 @@ class Turn
 
   def check_win_diagonal_upward 
     inverted_board = @board.game_board.reverse
-
-      diag1 = [inverted_board[0][0], inverted_board[1][1],inverted_board[2][2],
+    diag1 = [inverted_board[0][0], inverted_board[1][1],inverted_board[2][2],
                 inverted_board[3][3],inverted_board[4][4],inverted_board[5][5]]
-      diag2 = [inverted_board[0][1], inverted_board[1][2],inverted_board[2][3],
+    diag2 = [inverted_board[0][1], inverted_board[1][2],inverted_board[2][3],
                 inverted_board[3][4],inverted_board[4][5],inverted_board[5][6]]
-      diag3 = [inverted_board[0][2], inverted_board[1][3],inverted_board[2][4],
+    diag3 = [inverted_board[0][2], inverted_board[1][3],inverted_board[2][4],
                 inverted_board[3][5],inverted_board[4][6]]
-      diag4 = [inverted_board[1][0], inverted_board[2][1],inverted_board[3][2],
+    diag4 = [inverted_board[1][0], inverted_board[2][1],inverted_board[3][2],
                 inverted_board[4][3],inverted_board[5][4]]
-      diag5 = [inverted_board[0][3], inverted_board[1][4],inverted_board[2][5],
+    diag5 = [inverted_board[0][3], inverted_board[1][4],inverted_board[2][5],
                 inverted_board[3][6]]
-      diag6 = [inverted_board[2][0], inverted_board[3][1],inverted_board[4][2],
+    diag6 = [inverted_board[2][0], inverted_board[3][1],inverted_board[4][2],
                 inverted_board[5][3]]
 
-      posible_diagonals = [diag1, diag2, diag3, diag4, diag5, diag6]
+    posible_diagonals = [diag1, diag2, diag3, diag4, diag5, diag6]
   
-      posible_diagonals.find do |diagonal|
-        if diagonal.join.include?("XXXX") == true
-          return player1
-        elsif diagonal.join.include?("OOOO") == true
-          return computer_player
-        end
+    posible_diagonals.find do |diagonal|
+      if diagonal.join.include?("XXXX") == true
+        return player1
+      elsif diagonal.join.include?("OOOO") == true
+        return computer_player
       end
     end
+  end
     
   def check_all_wins
     if check_win_diagonal_downward != nil
