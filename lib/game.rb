@@ -22,9 +22,21 @@ class Game
           Please enter p to play or q to quit.
       --------------------------------------------
       "
+      
     user_welcome_entry = gets.chomp.capitalize
       if user_welcome_entry.downcase == "p"
-        play_connect_four
+        user_chooses_play_options
+    #     puts "Do you want to play with a friend or a machine?"
+    #     puts "Type 'f' for friend or 'c' for computer."
+    #      user_choice_of_player = gets.chomp.downcase 
+    #      if user_choice_of_player == 'c'
+    #       play_connect_four
+    #      elsif == 'f'
+    #       play_connect_four_with_friend
+    #      else 
+    #       "Please enter if you want to play with a friend(f) or computer(c)."
+    #         user_choice_of_player = gets.chomp.downcase 
+    #      end
       elsif user_welcome_entry.downcase == 'q'
         exit
       else
@@ -47,12 +59,12 @@ class Game
   end
 
   def start_time 
-    @start_time ||= Time.now.freeze 
-    #memoization
+    @start_time ||= Time.now.freeze
   end
 
   def total_time
     time = Time.now.to_i - start_time.to_f 
+    time.freeze
   end
 
   def play_connect_four
@@ -61,7 +73,7 @@ class Game
     @player1 = Player.new("", "X")
     @turn = Turn.new(@player1, @board)
     create_player
-    start_time 
+    # start_time 
     
     puts print_board
         
@@ -100,10 +112,8 @@ class Game
   def display_winner 
     if @turn.check_all_wins == @player1
       puts "  ~*~*~*~ Congrats #{@player1.name}! You won! ~*~*~*~"
-      # puts total_time
-      # record_end_time << total_time
-      # puts record_end_time
-      # welcome_message
+      #  record_end_time(total_time)   
+       welcome_message
     elsif @turn.check_all_wins == @turn.computer_player
       puts "!--- HAHA Human! You lose! Yeah! ---!"
       welcome_message
@@ -113,12 +123,27 @@ class Game
     end 
   end
 
-  def record_end_time 
-    []
+  def record_end_time(time) 
+    time_arr = []
+    time_arr << time
+    puts time_arr.sort
   end
 
-  def log_time_result 
-    # require 'pry'; binding.pry
-    puts record_end_time.sort 
+  def user_chooses_play_options 
+    puts "Do you want to play with a friend or a machine?"
+    puts "Type 'f' for friend or 'c' for computer."
+    user_choice_of_player = gets.chomp.downcase 
+    if user_choice_of_player == 'c'
+      play_connect_four
+    elsif user_choice_of_player == 'f'
+      play_connect_four_with_friend
+    else 
+      puts "Invalid selection. Please enter if you want to play with a friend(f) or computer(c)."
+      self.user_chooses_play_options
+    end
+  end
+
+  def play_connect_four_with_friend 
+    puts "yeah boii"
   end
 end
