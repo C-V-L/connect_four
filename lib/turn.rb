@@ -1,10 +1,11 @@
 class Turn
-  attr_reader :name, :board, :player1, :computer_player
+  attr_reader :name, :board, :player1, :player2
+
 
   def initialize(player1, board)
     @board = board
     @player1 = player1
-    @computer_player = Player.new("Computer", "O")
+    @player2 = Player.new("", "O")
   end
 
   def check_win_horizontal
@@ -12,7 +13,7 @@ class Turn
       if row.join.include?("XXXX") == true
         return player1
       elsif row.join.include?("OOOO") == true
-        return computer_player
+        return player2
       end
     end
   end
@@ -22,7 +23,8 @@ class Turn
       if row.join.include?("XXXX") == true
         return player1
       elsif row.join.include?("OOOO") == true
-        return computer_player
+        return player2
+
       end
     end
   end
@@ -46,7 +48,8 @@ class Turn
       if diagonal.join.include?("XXXX") == true
         return player1
       elsif diagonal.join.include?("OOOO") == true
-        return computer_player
+        return player2
+
       end
     end
   end
@@ -72,7 +75,7 @@ class Turn
       if diagonal.join.include?("XXXX") == true
         return player1
       elsif diagonal.join.include?("OOOO") == true
-        return computer_player
+        return player2
       end
     end
   end
