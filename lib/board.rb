@@ -2,11 +2,11 @@ require './lib/turn'
 require './lib/player'
 
 class Board < Turn
-  attr_reader :game_board
+  attr_reader :game_board, :player1, :player2
   def initialize
     @game_board = set_up_board
     @player1 = Player.new("", "X")
-    @computer_player = Player.new("BeepBoop", "O")
+    @player2 = Player.new("", "O")
   end
 
   def set_up_board
@@ -47,6 +47,15 @@ class Board < Turn
     end.reverse
   end
 
+  def player2_place_piece(player_input)  
+    user_chosen_column = convert_letter_to_index(player_input)
+    game_board.reverse.find do |row| 
+      if row[user_chosen_column] == "."
+        row[user_chosen_column] = @player2.piece 
+      end      
+    end.reverse
+  end
+
    def computer_selection 
     computer_selection_array = ["A", "B", "C", "D", "E", "F", "G"] 
     computer_input = computer_selection_array.shuffle!
@@ -62,7 +71,7 @@ class Board < Turn
     user_chosen_column = convert_letter_to_index(computer_input)
     game_board.reverse.find do |row| 
       if row[user_chosen_column] == "."
-        row[user_chosen_column] = @computer_player.piece 
+        row[user_chosen_column] = @player2.piece 
       end      
     end.reverse
   end 
