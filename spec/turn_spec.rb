@@ -79,6 +79,9 @@ RSpec.describe Turn do
     board = Board.new
     player1 = Player.new("Benedict", "X")
     turn = Turn.new(player1, board)
+
+    expect(turn.check_for_draw).to eq false 
+  
     turn.board.game_board = 
       [["Y","Y","Y","Y","Y","Y","Y"],
       ["Y","Y","Y","Y","Y","Y","Y"],
