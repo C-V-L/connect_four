@@ -2,7 +2,8 @@ require './lib/turn'
 require './lib/player'
 
 class Board < Turn
-  attr_reader :game_board, :player1, :player2
+  attr_reader :player1, :player2
+  attr_accessor :game_board
   def initialize
     @game_board = set_up_board
     @player1 = Player.new("", "X")

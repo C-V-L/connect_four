@@ -74,4 +74,18 @@ RSpec.describe Turn do
       expect(turn.check_win_diagonal_upward).to be(turn.player1)
     end
   end
+
+  it 'can check for draw' do
+    board = Board.new
+    player1 = Player.new("Benedict", "X")
+    turn = Turn.new(player1, board)
+    turn.board.game_board = 
+      [["Y","Y","Y","Y","Y","Y","Y"],
+      ["Y","Y","Y","Y","Y","Y","Y"],
+      ["Y","Y","Y","Y","Y","Y","Y"],
+      ["Y","Y","Y","Y","Y","Y","Y"],
+      ["Y","Y","Y","Y","Y","Y","Y"],
+      ["Y","Y","Y","Y","Y","Y","Y"]]
+    expect(turn.check_for_draw).to be true
+  end
 end

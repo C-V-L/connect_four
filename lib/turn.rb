@@ -93,6 +93,14 @@ class Turn
       false 
     end 
   end
+
+  def check_for_draw
+    if @board.game_board[0].include?(".") == false 
+      true 
+    else
+      false
+    end
+  end
 end 
 
 

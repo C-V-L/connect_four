@@ -74,7 +74,7 @@ class Game
     puts print_board
         
       until (turn.check_win_diagonal_downward != nil) || (turn.check_win_diagonal_upward != nil) ||
-            (turn.check_win_horizontal != nil) || (turn.check_win_vertical != nil) || (check_for_draw == true)
+            (turn.check_win_horizontal != nil) || (turn.check_win_vertical != nil) || (@turn.check_for_draw == true)
 
         puts "Choose a column from A - G to place your piece" 
         user_column_choice = gets.chomp.upcase
@@ -96,14 +96,6 @@ class Game
       end  
   end
 
-  def check_for_draw
-    if @board.game_board[0].include?(".") == false 
-      true 
-    else
-      false
-    end
-  end
-
   def display_winner 
     if @turn.check_all_wins == @player1
       puts "  ~*~*~*~ #{@player1.name}, you win the game! ~*~*~*~"
@@ -112,7 +104,7 @@ class Game
     elsif @turn.check_all_wins == @turn.player2
       puts "!--- #{@player2.name} wins the game ---!"
       welcome_message
-    elsif turn.check_all_wins == false && check_for_draw == true 
+    elsif @turn.check_all_wins == false && @turn.check_for_draw == true 
       puts "It's a draw. Everyone loses :'("
       welcome_message
     end 
@@ -151,7 +143,7 @@ class Game
     puts print_board
         
       until (turn.check_win_diagonal_downward != nil) || (turn.check_win_diagonal_upward != nil) ||
-            (turn.check_win_horizontal != nil) || (turn.check_win_vertical != nil) || (check_for_draw == true)
+            (turn.check_win_horizontal != nil) || (turn.check_win_vertical != nil) || (@turn.check_for_draw == true)
 
           player1_turn
           player2_turn
