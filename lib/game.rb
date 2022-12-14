@@ -81,15 +81,22 @@ class Game
 
           if board.open_column?(user_column_choice) == true 
             board.place_piece(user_column_choice)
-            computer_turn = board.computer_selection
-            board.computer_place_piece(computer_turn)
-            puts print_board
+
             turn.check_win_diagonal_downward
             turn.check_win_diagonal_upward
             turn.check_win_horizontal
             turn.check_win_vertical
             display_winner
-      
+
+            computer_turn = board.computer_selection
+            board.computer_place_piece(computer_turn)
+            turn.check_win_diagonal_downward
+            turn.check_win_diagonal_upward
+            turn.check_win_horizontal
+            turn.check_win_vertical
+            display_winner
+
+            puts print_board
           else       
             puts "#{user_column_choice}: This is not an available column"
           end
@@ -98,13 +105,16 @@ class Game
 
   def display_winner 
     if @turn.check_all_wins == @player1
+      puts print_board
       puts "  ~*~*~*~ #{@player1.name}, you win the game! ~*~*~*~"
       #  record_end_time(total_time)   
        welcome_message
     elsif @turn.check_all_wins == @turn.player2
+      puts print_board
       puts "!--- #{@player2.name} wins the game ---!"
       welcome_message
     elsif @turn.check_all_wins == false && @turn.check_for_draw == true 
+      puts print_board
       puts "It's a draw. Everyone loses :'("
       welcome_message
     end 
