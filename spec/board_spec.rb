@@ -44,7 +44,7 @@ RSpec.describe Board do
       board = Board.new
       player1 = Player.new("Benedict", "X")
       turn = Turn.new(player1, board)
-      expect(board.computer_player).to be_a(Player)
+      expect(board.player2).to be_a(Player)
       expect(board.open_column?(board.computer_selection)).to eq(true)
     end
   end
