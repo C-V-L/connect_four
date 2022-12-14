@@ -15,6 +15,12 @@ class Game
     @player1.name << user_name_entry
   end
 
+  def create_player_two
+    puts "Hello, player 2! Please enter your name below"
+    user_name_entry = gets.chomp.capitalize
+    @player2.name << user_name_entry
+  end
+
   def welcome_message 
     puts "
       --------------------------------------------
@@ -100,7 +106,7 @@ class Game
 
   def display_winner 
     if @turn.check_all_wins == @player1
-      puts "  ~*~*~*~ #{@player1.name}! Wins the game! ~*~*~*~"
+      puts "  ~*~*~*~ #{@player1.name}, you win the game! ~*~*~*~"
       #  record_end_time(total_time)   
        welcome_message
     elsif @turn.check_all_wins == @turn.player2
@@ -132,16 +138,11 @@ class Game
     end
   end
 
-  def create_player_two
-    puts "Hello, friend! Please enter your name below"
-    user_name_entry = gets.chomp.capitalize
-    @player2.name << user_name_entry
-  end
-
   def play_connect_four_with_friend 
     
     @board = Board.new
     @player1 = Player.new("", "X")
+    @player2 = Player.new("", "O")
     @turn = Turn.new(@player1, @board)
     create_player_one
     create_player_two
